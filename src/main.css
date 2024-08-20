@@ -1,0 +1,25 @@
+:root {
+    /* COLORS */
+    /* https://coolors.co/f3e5ab-6f4a3b-d1bea8 */
+    --color-vanilla: #f3e5ab;
+    --color-vanilla30: #f3e5ab4d;
+    --color-dark: #6f4a3b;
+    --color-tertiary: #d1bea8;
+}
+
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--color-vanilla30);
+    color: var(--color-dark);
+    margin: 0;
+    padding: 10px;
+    overflow: hidden;
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+}
