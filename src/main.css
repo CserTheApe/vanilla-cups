@@ -1,20 +1,22 @@
 :root {
     /* COLORS */
     /* https://coolors.co/f3e5ab-6f4a3b-d1bea8 */
+    --color-light: #fefdf8;
     --color-vanilla: #f3e5ab;
-    --color-vanilla30: #f3e5ab4d;
     --color-dark: #6f4a3b;
     --color-tertiary: #d1bea8;
+    --color-tertiary30: #d1bea84d;
 }
 
 * {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    font-family: Arial;
 }
 
 body {
-    background: var(--color-vanilla30);
+    background: var(--color-light);
     color: var(--color-dark);
     margin: 0;
     padding: 10px;
@@ -22,4 +24,32 @@ body {
     min-height: 100vh;
     height: 100%;
     width: 100%;
+}
+
+button {
+    background: var(--color-tertiary);
+    border: 1px solid var(--color-dark);
+    color: var(--color-dark);
+    padding: 8px;
+}
+button:hover {
+    background: var(--color-vanilla);
+}
+button:disabled {
+    background: var(--color-dark);
+    color: var(--color-tertiary);
+}
+
+select {
+    background: var(--color-tertiary);
+    border: 1px solid var(--color-dark);
+    color: var(--color-dark);
+    padding: 4px 8px;
+}
+select:hover {
+    background: var(--color-tertiary30);
+}
+
+input[type="range"] {
+    accent-color: var(--color-dark);
 }

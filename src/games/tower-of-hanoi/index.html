@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tower of Hanoi</title>
+        <link href="../../main.css" type="text/css" rel="stylesheet" />
+        <link href="style.css" type="text/css" rel="stylesheet" />
+        <link href="../../lib/modal/style.css" type="text/css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>Tower of Hanoi</h1>
+        <div id="game-container">
+            <div id="game-header">
+                <div>
+                    <span>Rings:</span>
+                    <select id="ring-select">
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
+                </div>
+                <div>Moves: <span id="move-span"></span></div>
+                <div>
+                    <button onclick="initGame()">Reset</button>
+                </div>
+            </div>
+            <p style="text-align: center">Move all rings from tower 1 to 3</p>
+            <canvas id="canvas" width="1600" height="700"></canvas>
+        </div>
+
+        <script src="../../lib/modal/script.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>

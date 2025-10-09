@@ -1,0 +1,41 @@
+.modal-background {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    background: var(--color-light);
+    position: relative;
+    z-index: 2;
+    margin: auto;
+    padding: 20px;
+    border: 2px solid var(--color-dark);
+    /* min-width: 30vw; */
+    max-width: 90vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.close-button {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    cursor: pointer;
+}
+
+.modal-title {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.has-close-button {
+    padding-right: 40px;
+}
