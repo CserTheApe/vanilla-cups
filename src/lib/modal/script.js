@@ -28,6 +28,7 @@ function createMessageModal(message) {
     const modalTitle = document.createElement("div");
     modalTitle.innerHTML = message;
     modalTitle.classList.add("modal-title");
+    modalTitle.style.textAlign = 'center';
     modalBody.appendChild(modalTitle);
     document.getElementsByTagName("body")[0].appendChild(modal);
 }
@@ -42,8 +43,9 @@ function createNormalModal(title, content) {
         modalBody.appendChild(modalTitle);
     }
     if (content) {
-        const modalText = document.createElement("p");
+        const modalText = document.createElement("div");
         modalText.innerHTML = content;
+        modalText.style.cssText += 'margin-top: 20px;';
         modalBody.appendChild(modalText);
     }
     document.getElementsByTagName("body")[0].appendChild(modal);

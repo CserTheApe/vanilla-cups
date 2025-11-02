@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Eso-Lang</title>
+        <link href="../../main.css" type="text/css" rel="stylesheet" />
+        <link href="style.css" type="text/css" rel="stylesheet" />
+        <link href="../../lib/modal/style.css" type="text/css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>Eso-Lang</h1>
+        <div id="app-container">
+            <div class="app-section">
+                <div id="app-input-section" style="display:flex; flex-direction: column; gap: 10px;">
+                    <div>
+                        <span>Language:</span>
+                        <select id="lang-select"></select>
+                    </div>
+                    <div>
+                        Code: <br />
+                        <textarea id="code-text"></textarea>
+                    </div>
+                    <div>
+                        Input: <br />
+                        <textarea id="input-text"></textarea>
+                    </div>
+                    <div>
+                        Memory: <input type="number" min="10" max="30000" id="mem-size" />
+                    </div>
+                </div>
+                <button id="execute">Execute</button>
+                <div>
+                    Output: <br />
+                    <textarea id="output-text"></textarea>
+                </div>
+            </div>
+            <div class="app-section">
+                <div style="display:flex; justify-content: space-between;">
+                    <button disabled>Debug Code</button>
+                    <button onclick="openUtfTable()">UTF-16 Table</button>
+                </div>
+                <canvas id="canvas" width="900" height="600"></canvas>
+            </div>
+        </div>
+        
+        <script src="../../lib/modal/script.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>

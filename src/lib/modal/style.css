@@ -18,8 +18,9 @@
     margin: auto;
     padding: 20px;
     border: 2px solid var(--color-dark);
-    /* min-width: 30vw; */
+    min-width: 20vw;
     max-width: 90vw;
+    max-height: 90vh;
     overflow-x: hidden;
     overflow-y: auto;
 }
