@@ -8,39 +8,44 @@
         <link href="style.css" type="text/css" rel="stylesheet" />
     </head>
     <body>
-        <h1>Hangman</h1>
-        <div id="game-container">
-            <div id="init-container">
-                <p>Select a category:</p>
-                <div id="select-categories"></div>
-                <p>Select max incorrect choices:</p>
-                <input type="range" min="6" max="10" id="incorrect-range" />
-                <p>Value: <span id="incorrect-range-value"></span></p>
-                <button
-                    id="new-game-button"
-                    onclick="initializePlayContainer()"
-                >
-                    Start Game
-                </button>
+        <header></header>
+        <main>
+            <h1>Hangman</h1>
+            <div id="game-container">
+                <div id="init-container">
+                    <p>Select a category:</p>
+                    <div id="select-categories"></div>
+                    <p>Select max incorrect choices:</p>
+                    <input type="range" min="6" max="10" id="incorrect-range" />
+                    <p>Value: <span id="incorrect-range-value"></span></p>
+                    <button
+                        id="new-game-button"
+                        onclick="initializePlayContainer()"
+                    >
+                        Start Game
+                    </button>
+                </div>
+                <div id="play-container">
+                    <canvas id="canvas" width="900" height="900"></canvas>
+                    <div id="word-section"></div>
+                    <div id="letters-section"></div>
+                </div>
+                <div id="final-container">
+                    <h2 id="final-header"></h2>
+                    <p style="margin-bottom: 2px">The word was:</p>
+                    <div id="final-word-section"></div>
+                    <button
+                        style="margin-top: 16px"
+                        onclick="initializeInitContainer()"
+                    >
+                        Go Again
+                    </button>
+                </div>
             </div>
-            <div id="play-container">
-                <canvas id="canvas" width="900" height="900"></canvas>
-                <div id="word-section"></div>
-                <div id="letters-section"></div>
-            </div>
-            <div id="final-container">
-                <h2 id="final-header"></h2>
-                <p style="margin-bottom: 2px">The word was:</p>
-                <div id="final-word-section"></div>
-                <button
-                    style="margin-top: 16px"
-                    onclick="initializeInitContainer()"
-                >
-                    Go Again
-                </button>
-            </div>
-        </div>
+        </main>
+        <footer></footer>
 
+        <script src="../../main.js"></script>
         <script src="script.js"></script>
     </body>
 </html>

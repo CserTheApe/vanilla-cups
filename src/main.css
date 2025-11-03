@@ -6,6 +6,7 @@
     --color-dark: #6f4a3b;
     --color-tertiary: #d1bea8;
     --color-tertiary30: #d1bea84d;
+    --color-tertiary60: #d1bea899;
 }
 
 * {
@@ -61,4 +62,57 @@ table {
 
 th, td {
     padding: 8px;
+}
+
+tbody > tr:nth-child(even) {
+    background-color: var(--color-tertiary30);
+}
+
+.accordion {
+    background-color: var(--color-tertiary);
+    padding: 16px;
+    font-size: larger;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    transition: 0.5s ease;
+}
+
+.accordion:hover {
+    background-color: var(--color-tertiary60);
+}
+
+.accordion-body {
+    overflow: hidden;
+    transition: 0.5s ease;
+}
+
+ul.link-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul.link-list > li {
+    border: 2px solid var(--color-dark);
+    padding: 12px 8px;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+ul.link-list > li:first-child {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+ul.link-list > li:last-child {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+ul.link-list > li:not(:first-child) {
+    border-top: 0;
+}
+
+ul.link-list > li:hover {
+    background-color: var(--color-tertiary30);
 }
