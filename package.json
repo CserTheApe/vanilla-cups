@@ -3,7 +3,8 @@
   "source": "src/**/*.html",
   "scripts": {
     "start": "parcel src/index.html -p 3000 --open",
-    "build": "parcel build --public-url /dist"
+    "build": "parcel build --public-url /dist",
+    "build:prod": "parcel build --public-url /"
   },
   "devDependencies": {
     "parcel": "^2.16.1"
