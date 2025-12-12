@@ -12,14 +12,32 @@
     gap: 10px;
 }
 
-textarea {
-    width: 100%;
-    resize: none;
-    font-family: monospace;
+.highlight {
+    background-color: aquamarine;
 }
 
-#code-text {
+textarea, #code-overlay {
+    width: 100%;
+}
+textarea, #code-overlay, #code-overlay > span {
+    resize: none;
+    font-family: monospace;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+#code-text, #code-overlay {
     height: 150px;
+}
+
+#code-overlay {
+    display: none;
+    border: 1px solid rgb(118, 118, 118);
+    border-radius: 1px;
+    padding: 2px;
+    background-color: white;
+    color: black;
+    overflow-y: auto;
 }
 
 #output-text {

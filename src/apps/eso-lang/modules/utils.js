@@ -350,3 +350,21 @@ export function openUtfTable() {
 export function initialiseUtf() {
     document.getElementById("utf-button").addEventListener('click', openUtfTable);
 }
+
+export function populateOverlay(codeText, codeOverlay, syntax) {
+    let overlayArray = [];
+    codeOverlay.innerHTML = '';
+    codeText.split('').forEach((char, i) => {
+        if (char == '\n') {
+            codeOverlay.innerHTML += '<br />';
+        }
+        else if(syntax.includes(char)) {
+            codeOverlay.innerHTML += `<span id="overlay-${i}">${char}</span>`;
+            overlayArray.push(i);
+        }
+        else {
+            codeOverlay.innerHTML += char;
+        }
+    });
+    return overlayArray;
+}

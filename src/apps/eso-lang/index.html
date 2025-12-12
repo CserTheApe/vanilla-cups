@@ -22,6 +22,8 @@
                         <div>
                             Code: <br />
                             <textarea id="code-text"></textarea>
+                            <div id="code-overlay"></div>
+                            <span style="font-size: small; font-weight: 600;">Use "<span id="breakpoint-text">#</span>" for breakpoints</span>
                         </div>
                         <div>
                             Input: <br />
@@ -39,7 +41,12 @@
                 </div>
                 <div class="app-section">
                     <div style="display:flex; justify-content: space-between;">
-                        <button disabled>Debug Code</button>
+                        <button id="dbuggr">Debug Code</button>
+                        <div id="dbug-options" style="display: none;">
+                            <button id="dbug-step">Step</button>
+                            <button id="dbug-run">Run</button>
+                            <button id="dbug-stop">Stop</button>
+                        </div>
                         <button id="utf-button">UTF-16 Table</button>
                     </div>
                     <canvas id="canvas" width="900" height="600"></canvas>
