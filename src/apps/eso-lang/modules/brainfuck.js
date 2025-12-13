@@ -56,7 +56,13 @@ export function executeBrainfuck() {
                 memory[memPtr] = tempVal;
                 break;
             case '[':
-                loopStack.push(instPtr);
+                if (memory[memPtr] > 0)
+                    loopStack.push(instPtr);
+                else {
+                    do {
+                        instPtr++;
+                    } while (codeText[instPtr] != ']')
+                }
                 break;
             case ']':
                 if (memory[memPtr] == 0) {
@@ -126,7 +132,13 @@ export function debugBrainfuckStep() {
             break;
         case '[':
             bfDebugStepRunning();
-            loopStack.push(overlayPtr);
+            if (memory[memPtr] > 0)
+                loopStack.push(overlayPtr);
+            else {
+                do {
+                    overlayPtr++;
+                } while (codeText[overlayArray[overlayPtr]] != ']')
+            }
             drawMemory();
             drawLoop();
             bfDebugStepRunning(false);

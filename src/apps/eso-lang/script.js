@@ -14,6 +14,8 @@ const LANGS = [
     // 'BitChanger',
     // 'Bitter',
     // 'Boolet',
+    // 'Pain',
+    // 'Fish',
 ];
 const BREAKPOINTS = ['#', '!'];
 var sLang = LANGS[0];
