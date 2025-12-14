@@ -18,8 +18,8 @@ const LANGS = [
     // 'Fish',
 ];
 const BREAKPOINTS = ['#', '!'];
-var sLang = LANGS[1];
-var sBreakpoint = BREAKPOINTS[1];
+var sLang = LANGS[0];
+var sBreakpoint = BREAKPOINTS[0];
 var breakpointText = document.getElementById('breakpoint-text');
 
 var codeOverlay = document.getElementById('code-overlay');
