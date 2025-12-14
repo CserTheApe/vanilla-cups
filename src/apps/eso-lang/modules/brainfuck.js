@@ -28,13 +28,22 @@ var ctx = canvas.getContext("2d");
 ctx.textAlign = 'center';
 ctx.textBaseline = 'middle';
 
-export function executeBrainfuck() {
-    initialiseMemory();
-    let tempVal, instPtr = 0;
-    loopStack = [], inPtr = 0;
+
+function initialise() {
+    let memSize = Number(memSizeInput.value);
+    memory = new Array(memSize >= 10 && memSize <= 30000 ? memSize : 300).fill(0);
+    memPtr = 0;
     codeText = codeTextarea.value;
     inputText = inputTextarea.value;
     outputTextarea.value = '';
+    loopStack = [], inPtr = 0;
+    debugRunMode = false;
+    runSpeed = 1;
+}
+
+export function executeBrainfuck() {
+    initialise();
+    let tempVal, instPtr = 0;
     
     while(instPtr < codeText.length) {
         let inst = codeText[instPtr];
@@ -88,100 +97,9 @@ export function executeBrainfuck() {
     }
 }
 
-export function initialiseBrainfuckDebug() {
-    codeText = codeTextarea.value;
-    inputText = inputTextarea.value;
-    outputTextarea.value = '';
-    debugStep.disabled = false;
-    debugRun.disabled = false;
-    debugStop.disabled = false;
-    codeOverlay.style.backgroundColor = 'white';
-    initialiseMemory();
-    loopStack = [], inPtr = 0;
-    overlayArray = populateOverlay(codeText, codeOverlay, ['+', '-', '>', '<', '[', ']', ',', '.', '#']);
-    overlayPtr = 0;
-    drawMemory();
-    checkEndScript();
-}
 
-export function debugBrainfuckRun() {
-    debugRunMode = true;
-    runSpeed = 5;
-    debugBrainfuckStep();
-}
-
-export function debugBrainfuckStep() {
-    document.getElementById(`overlay-${overlayArray[overlayPtr]}`).classList.remove('highlight');
-
-    switch(codeText[overlayArray[overlayPtr]]) {
-        case '+':
-            bfDebugStepRunning();
-            requestAnimationFrame(animPreTextIncrement);
-            break;
-        case '-':
-            bfDebugStepRunning();
-            requestAnimationFrame(animPreTextDecrement);
-            break;
-        case '<':
-            bfDebugStepRunning();
-            requestAnimationFrame(animPreLeft);
-            break;
-        case '>':
-            bfDebugStepRunning();
-            requestAnimationFrame(animPreRight);
-            break;
-        case '[':
-            bfDebugStepRunning();
-            if (memory[memPtr] > 0)
-                loopStack.push(overlayPtr);
-            else {
-                do {
-                    overlayPtr++;
-                } while (codeText[overlayArray[overlayPtr]] != ']')
-            }
-            drawMemory();
-            drawLoop();
-            bfDebugStepRunning(false);
-            break;
-        case ']':
-            bfDebugStepRunning();
-            let alt = false;
-            if (memory[memPtr] == 0) {
-                loopStack.pop();
-            }
-            else {
-                overlayPtr = loopStack[loopStack.length - 1];
-                alt = true;
-            }
-            drawMemory();
-            drawLoop(alt);
-            bfDebugStepRunning(false);
-            break;
-        case ',':
-            bfDebugStepRunning();
-            requestAnimationFrame(animPreInput);
-            break;
-        case '.':
-            bfDebugStepRunning();
-            requestAnimationFrame(animPreOutput);
-            break;
-    }
-}
-
-function checkEndScript() {
-    if (overlayPtr >= overlayArray.length) {
-        codeOverlay.style.backgroundColor = '#33aa3377';
-        debugStep.disabled = true;
-        debugRun.disabled = true;
-    }
-    else {
-        document.getElementById(`overlay-${overlayArray[overlayPtr]}`).classList.add('highlight');
-    }
-}
-
-function bfDebugStepRunning(val = true) {
+function isDebugStepRunning(val = true) {
     debugStep.disabled = val;
-    debugStop.disabled = val;
     debugRun.disabled = val;
     if(!val) {
         if(!debugRunMode) {
@@ -204,10 +122,98 @@ function bfDebugStepRunning(val = true) {
     }
 }
 
-function initialiseMemory() {
-    let memSize = Number(memSizeInput.value);
-    memory = new Array(memSize >= 10 && memSize <= 30000 ? memSize : 300).fill(0);
-    memPtr = 0;
+export function initialiseBrainfuckDebug() {
+    initialise();
+    ctx.textAlign = 'center';
+    debugStep.disabled = false;
+    debugRun.disabled = false;
+    debugStop.disabled = false;
+    codeOverlay.style.backgroundColor = 'white';
+    overlayArray = populateOverlay(codeText, codeOverlay, ['+', '-', '>', '<', '[', ']', ',', '.', '#']);
+    overlayPtr = 0;
+    drawMemory();
+    checkEndScript();
+}
+
+export function debugBrainfuckRun() {
+    debugRunMode = true;
+    runSpeed = 5;
+    debugBrainfuckStep();
+}
+
+export function debugBrainfuckStep() {
+    document.getElementById(`overlay-${overlayArray[overlayPtr]}`).classList.remove('highlight');
+
+    switch(codeText[overlayArray[overlayPtr]]) {
+        case '+':
+            isDebugStepRunning();
+            requestAnimationFrame(animPreTextIncrement);
+            break;
+        case '-':
+            isDebugStepRunning();
+            requestAnimationFrame(animPreTextDecrement);
+            break;
+        case '<':
+            isDebugStepRunning();
+            requestAnimationFrame(animPreLeft);
+            break;
+        case '>':
+            isDebugStepRunning();
+            requestAnimationFrame(animPreRight);
+            break;
+        case '[':
+            isDebugStepRunning();
+            if (memory[memPtr] > 0)
+                loopStack.push(overlayPtr);
+            else {
+                do {
+                    overlayPtr++;
+                } while (codeText[overlayArray[overlayPtr]] != ']')
+            }
+            drawMemory();
+            drawLoop();
+            isDebugStepRunning(false);
+            break;
+        case ']':
+            isDebugStepRunning();
+            let alt = false;
+            if (memory[memPtr] == 0) {
+                loopStack.pop();
+            }
+            else {
+                overlayPtr = loopStack[loopStack.length - 1];
+                alt = true;
+            }
+            drawMemory();
+            drawLoop(alt);
+            isDebugStepRunning(false);
+            break;
+        case ',':
+            isDebugStepRunning();
+            requestAnimationFrame(animPreInput);
+            break;
+        case '.':
+            isDebugStepRunning();
+            requestAnimationFrame(animPreOutput);
+            break;
+        case '#':
+            overlayPtr++;
+            checkEndScript();
+            if (overlayPtr < overlayArray.length) debugBrainfuckStep();
+    }
+}
+
+function checkEndScript() {
+    if (overlayPtr >= overlayArray.length) {
+        codeOverlay.style.backgroundColor = '#33aa3377';
+        debugStep.disabled = true;
+        debugRun.disabled = true;
+    }
+    else {
+        let elem = document.getElementById(`overlay-${overlayArray[overlayPtr]}`);
+        elem.classList.add('highlight');
+        elem.scrollIntoView({behavior: 'smooth', container: 'nearest', block: 'center'});
+    }
 }
 
 function safeMemPtr(val) {
@@ -365,7 +371,7 @@ const animPostTextIncrement = (timestamp) => {
     }
     else {
         animTimestamp = undefined;
-        bfDebugStepRunning(false);
+        isDebugStepRunning(false);
     }
 }
 
@@ -402,7 +408,7 @@ const animPostTextDecrement = (timestamp) => {
     }
     else {
         animTimestamp = undefined;
-        bfDebugStepRunning(false);
+        isDebugStepRunning(false);
     }
 }
 
@@ -421,7 +427,7 @@ const animPreLeft = (timestamp) => {
     else {
         animTimestamp = undefined;
         memPtr = safeMemPtr(memPtr - 1);
-        bfDebugStepRunning(false);
+        isDebugStepRunning(false);
     }
 }
 
@@ -440,7 +446,7 @@ const animPreRight = (timestamp) => {
     else {
         animTimestamp = undefined;
         memPtr = safeMemPtr(memPtr + 1);
-        bfDebugStepRunning(false);
+        isDebugStepRunning(false);
     }
 }
 
@@ -466,7 +472,7 @@ const animPreInput = (timestamp) => {
         drawMemory();
         drawInput(1);
         inPtr++;
-        bfDebugStepRunning(false);
+        isDebugStepRunning(false);
     }
 }
 
@@ -485,6 +491,6 @@ const animPreOutput = (timestamp) => {
     else {
         animTimestamp = undefined;
         outputTextarea.value += String.fromCharCode(memory[memPtr]);
-        bfDebugStepRunning(false);
+        isDebugStepRunning(false);
     }
 }

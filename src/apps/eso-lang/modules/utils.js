@@ -347,10 +347,6 @@ export function openUtfTable() {
     )
 }
 
-export function initialiseUtf() {
-    document.getElementById("utf-button").addEventListener('click', openUtfTable);
-}
-
 export function populateOverlay(codeText, codeOverlay, syntax) {
     let overlayArray = [];
     codeOverlay.innerHTML = '';

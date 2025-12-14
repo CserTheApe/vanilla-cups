@@ -1,8 +1,8 @@
-import { initialiseUtf, populateOverlay } from './modules/utils.js'
+import { openUtfTable } from './modules/utils.js'
 import { executeBrainfuck, initialiseBrainfuckDebug, debugBrainfuckStep, debugBrainfuckRun } from './modules/brainfuck.js';
-import { execute1Plus } from './modules/1plus.js';
+import { debug1PlusRun, debug1PlusStep, execute1Plus, initialise1PlusDebug } from './modules/1plus.js';
 
-initialiseUtf();
+document.getElementById("utf-button").addEventListener('click', openUtfTable);
 
 const LANGS = [
     'Brainfuck',
@@ -18,8 +18,8 @@ const LANGS = [
     // 'Fish',
 ];
 const BREAKPOINTS = ['#', '!'];
-var sLang = LANGS[0];
-var sBreakpoint = BREAKPOINTS[0];
+var sLang = LANGS[1];
+var sBreakpoint = BREAKPOINTS[1];
 var breakpointText = document.getElementById('breakpoint-text');
 
 var codeOverlay = document.getElementById('code-overlay');
@@ -29,10 +29,7 @@ var ctx = canvas.getContext("2d");
 
 var appInputSection = document.getElementById('app-input-section');
 var codeTextarea = document.getElementById('code-text');
-var inputTextarea = document.getElementById('input-text');
 var outputTextarea = document.getElementById('output-text');
-var codeText = codeTextarea.value;
-var inputText = inputTextarea.value;
 
 var langSelect = document.getElementById("lang-select");
 langSelect.addEventListener("change", (e) => {
@@ -51,15 +48,12 @@ let execBtn = document.getElementById("execute");
 execBtn.addEventListener("click", () => {
     appInputSection.inert = true;
     execBtn.disabled = true;
-    codeText = codeTextarea.value;
-    inputText = inputTextarea.value;
-    outputTextarea.value = '';
     switch(sLang) {
         case 'Brainfuck':
             executeBrainfuck();
             break;
         case '1+':
-            execute1Plus(codeText, inputText, '', outputTextarea, [], 0, {});
+            execute1Plus();
             break;
     }
     appInputSection.inert = false;
@@ -68,22 +62,21 @@ execBtn.addEventListener("click", () => {
 
 let debugBtn = document.getElementById("dbuggr");
 debugBtn.addEventListener("click", () => {
-    codeText = codeTextarea.value;
     enableDebug();
-    
-    let overlayArray;
     switch(sLang) {
         case 'Brainfuck':
             initialiseBrainfuckDebug();
             break;
         case '1+':
-            overlayArray = populateOverlay(codeText, codeOverlay, ['#', '(', ')', '1', '[', ']', '+', '*', '"', '/', '\\', '^', '<', '.', ',', ':', ';', '|']);
+            initialise1PlusDebug();
             break;
     }
 })
 
 let debugStop = document.getElementById("dbug-stop");
 debugStop.addEventListener("click", () => {
+    let aId = requestAnimationFrame(() => {});
+    cancelAnimationFrame(aId - 1);
     enableDebug(false);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 })
@@ -95,7 +88,7 @@ debugStep.addEventListener("click", () => {
             debugBrainfuckStep();
             break;
         case '1+':
-            // overlayArray = populateOverlay(codeText, codeOverlay, ['#', '(', ')', '1', '[', ']', '+', '*', '"', '/', '\\', '^', '<', '.', ',', ':', ';', '|']);
+            debug1PlusStep();
             break;
     }
 })
@@ -106,7 +99,7 @@ debugRun.addEventListener("click", () => {
             debugBrainfuckRun();
             break;
         case '1+':
-            // overlayArray = populateOverlay(codeText, codeOverlay, ['#', '(', ')', '1', '[', ']', '+', '*', '"', '/', '\\', '^', '<', '.', ',', ':', ';', '|']);
+            debug1PlusRun();
             break;
     }
 })

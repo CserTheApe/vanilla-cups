@@ -21,7 +21,6 @@ body {
     color: var(--color-dark);
     margin: 0;
     padding: 10px;
-    overflow: hidden;
     min-height: 100vh;
     height: 100%;
     width: 100%;
