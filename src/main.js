@@ -1,3 +1,31 @@
+// Header logic
+let header = document.getElementsByTagName("header")[0];
+let headerDiv = document.createElement("div");
+let homeLink = document.createElement("a");
+homeLink.setAttribute("href","/");
+homeLink.classList.add("nostyle");
+homeLink.classList.add("header-title-link");
+let headerImage = document.createElement("img");
+headerImage.setAttribute("src","/assets/logo.png");
+headerImage.setAttribute("width","50px");
+headerImage.setAttribute("height","50px");
+let headerTitle = document.createElement("h1");
+headerTitle.style.display = "inline-block";
+headerTitle.innerText = "Vanilla Cups";
+homeLink.appendChild(headerImage);
+homeLink.appendChild(headerTitle);
+headerDiv.appendChild(homeLink);
+header.appendChild(headerDiv);
+
+// Footer logic
+let footer = document.getElementsByTagName("footer")[0];
+let footerDiv = document.createElement("div");
+let footerTitle = document.createElement("p");
+footerTitle.innerText = "Like it? Don't let me know.";
+footerDiv.appendChild(footerTitle);
+footer.appendChild(footerDiv);
+
+
 // Accordion Logic
 let accordions = document.getElementsByClassName("accordion");
 let accordionBodies = document.getElementsByClassName("accordion-body");
@@ -31,6 +59,7 @@ for (let i = 0; i < accordions.length; i++) {
 // Link List Logic
 let listedLinks = document.querySelectorAll("ul.link-list > li");
 for (let link of listedLinks) {
+    link.innerHTML = `<img src='/assets/cup.png' width='24px' height='24px' /><span>${link.innerHTML}</span>`;
     link.addEventListener("click", () => {
         window.location.href = link.getAttribute("href");
     });

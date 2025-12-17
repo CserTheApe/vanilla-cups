@@ -4,6 +4,7 @@
     --color-light: #fefdf8;
     --color-vanilla: #f3e5ab;
     --color-dark: #6f4a3b;
+    --color-dark60: #6f4a3b99;
     --color-tertiary: #d1bea8;
     --color-tertiary30: #d1bea84d;
     --color-tertiary60: #d1bea899;
@@ -20,10 +21,21 @@ body {
     background: var(--color-light);
     color: var(--color-dark);
     margin: 0;
-    padding: 10px;
     min-height: 100vh;
-    height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+main, header, footer {
+    padding: 10px;
+}
+header, footer {
+    color: var(--color-light);
+    background: var(--color-dark);
+}
+main {
+    flex-grow: 1;
 }
 
 button {
@@ -67,6 +79,19 @@ tbody > tr:nth-child(even) {
     background-color: var(--color-tertiary30);
 }
 
+.nostyle, .nostyle:visited {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto;
+}
+
+.header-title-link {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    gap: 12px;
+}
+
 .accordion {
     background-color: var(--color-tertiary);
     padding: 16px;
@@ -97,6 +122,9 @@ ul.link-list > li {
     padding: 12px 8px;
     cursor: pointer;
     transition: 0.5s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 ul.link-list > li:first-child {

@@ -4,6 +4,8 @@ import { debug1PlusRun, debug1PlusStep, execute1Plus, initialise1PlusDebug } fro
 
 document.getElementById("utf-button").addEventListener('click', openUtfTable);
 
+
+// RESOURCE : https://esolangpark.vercel.app
 const LANGS = [
     'Brainfuck',
     '1+',
@@ -16,6 +18,10 @@ const LANGS = [
     // 'Boolet',
     // 'Pain',
     // 'Fish',
+    // 'Befunge-93',
+    // 'Chef',
+    // 'Deadfish',
+    // 'Shakespeare',
 ];
 const BREAKPOINTS = ['#', '!'];
 var sLang = LANGS[0];
