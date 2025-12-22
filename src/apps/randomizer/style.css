@@ -1,0 +1,43 @@
+#app-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#canvas-section {
+    display: none;
+}
+
+#image-section {
+    border: 1px solid var(--color-dark);
+    max-height: 50vh;
+    max-width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    overflow-y: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+#results-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.result-coin {
+    width: 50px;
+    height: 50px;
+    background-image: url("/assets/coin-sprite-sheet.png");
+    background-size: auto 50px;
+}
+
+.result-die {
+    width: 50px;
+    height: 50px;
+    background-image: url("/assets/dice-sprite-sheet.png");
+    background-size: auto 50px;
+}

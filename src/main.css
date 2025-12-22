@@ -90,6 +90,7 @@ tbody > tr:nth-child(even) {
     cursor: pointer;
     align-items: center;
     gap: 12px;
+    width: fit-content;
 }
 
 .accordion {

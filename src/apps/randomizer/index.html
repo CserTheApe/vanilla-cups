@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Randomizer</title>
+        <link href="../../main.css" type="text/css" rel="stylesheet" />
+        <link href="style.css" type="text/css" rel="stylesheet" />
+    </head>
+    <body>
+        <header></header>
+        <main>
+            <h2>Randomizer</h2>
+            <div id="app-container">
+                <div id="app-header">
+                    <div>
+                        <span>Tool:</span>
+                        <select id="tool-select"></select>
+                    </div>
+                </div>
+                <div id="app-main">
+                    <div>
+                        <span>Number: </span>
+                        <input id="tool-number-input" type="number" min="1" max="10" value="1"/>
+                    </div>
+                    <button id="execute">Toss</button>
+                    <div id="results-section"></div>
+                    <div id="image-section"></div>
+                    <div id="canvas-section"></div>
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+
+        <script src="../../main.js"></script>
+        <script src="script.js" type="module"></script>
+    </body>
+</html>

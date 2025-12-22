@@ -26,12 +26,23 @@ footerDiv.appendChild(footerTitle);
 footer.appendChild(footerDiv);
 
 
+
+// Link List Logic
+let listedLinks = document.querySelectorAll("ul.link-list > li");
+for (let link of listedLinks) {
+    link.innerHTML = `<img src='/assets/cup.png' width='24px' height='24px' /><span>${link.innerHTML}</span>`;
+    link.addEventListener("click", () => {
+        window.location.href = link.getAttribute("href");
+    });
+}
+
 // Accordion Logic
 let accordions = document.getElementsByClassName("accordion");
 let accordionBodies = document.getElementsByClassName("accordion-body");
 for (let i = 0; i < accordions.length; i++) {
     let aBody = accordionBodies[i];
     let iSpan = document.createElement("span");
+    accordions[i].appendChild(iSpan);
     if (aBody.classList.contains("closed")) {
         aBody.style.maxHeight = '0px';
         iSpan.innerText = "+";
@@ -39,7 +50,6 @@ for (let i = 0; i < accordions.length; i++) {
         aBody.style.maxHeight = aBody.scrollHeight + 'px';
         iSpan.innerText = "-";
     }
-    accordions[i].appendChild(iSpan);
 
     accordions[i].addEventListener("click", () => {
         if (aBody.style.maxHeight == "0px") {
@@ -52,15 +62,5 @@ for (let i = 0; i < accordions.length; i++) {
             aBody.style.maxHeight = '0px';
             iSpan.innerText = "+";
         }
-    });
-}
-
-
-// Link List Logic
-let listedLinks = document.querySelectorAll("ul.link-list > li");
-for (let link of listedLinks) {
-    link.innerHTML = `<img src='/assets/cup.png' width='24px' height='24px' /><span>${link.innerHTML}</span>`;
-    link.addEventListener("click", () => {
-        window.location.href = link.getAttribute("href");
     });
 }
