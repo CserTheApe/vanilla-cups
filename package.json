@@ -1,12 +1,11 @@
 {
   "name": "vanilla-cups",
-  "source": "src/**/*.html",
   "scripts": {
     "start": "parcel src/index.html -p 3000 --open",
-    "build": "parcel build --public-url /dist",
-    "build:prod": "parcel build --public-url /"
+    "build": "parcel build src/index.html"
   },
   "devDependencies": {
-    "parcel": "^2.16.1"
+    "parcel": "^2.16.1",
+    "parcel-bundler": "^1.12.5"
   }
 }
