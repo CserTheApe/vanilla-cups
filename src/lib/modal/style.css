@@ -32,11 +32,21 @@
     cursor: pointer;
 }
 
+.has-close-button {
+    padding-right: 40px;
+}
+
 .modal-title {
     font-size: 1.5em;
     font-weight: 600;
 }
 
-.has-close-button {
-    padding-right: 40px;
+.modal-footer {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    justify-content: end;
+    margin-top: 16px;
+    margin-right: -20px;
+    width: 100%;
 }

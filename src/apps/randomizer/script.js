@@ -1,9 +1,11 @@
 import { initialiseCoinToss, tossCoins } from "./modules/coin-toss.js";
 import { initialiseDiceRoll, rollDice } from "./modules/dice-roll.js";
+import { initialiseWheel } from "./modules/wheel.js";
 
 const TOOLS = [
     'Coin Toss',
     'Dice Roll',
+    'Wheel Picker'
 ];
 
 
@@ -33,6 +35,9 @@ toolSelect.addEventListener("change", (e) => {
             executeButton.innerText = "Roll";
             toolNumberInput.value = 2;
             initialiseDiceRoll();
+            break;
+        case 'Wheel Picker':
+            initialiseWheel();
             break;
     }
 });

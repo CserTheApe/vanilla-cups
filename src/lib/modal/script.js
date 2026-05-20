@@ -33,8 +33,8 @@ function createMessageModal(message) {
     document.getElementsByTagName("body")[0].appendChild(modal);
 }
 
-function createNormalModal(title, content) {
-    const modal = createModal(true);
+function createNormalModal(title, content, actionFunction, showCloseButton = true) {
+    const modal = createModal(showCloseButton);
     const modalBody = modal.getElementsByClassName("modal")[0];
     if (title) {
         const modalTitle = document.createElement("div");
@@ -47,6 +47,26 @@ function createNormalModal(title, content) {
         modalText.innerHTML = content;
         modalText.style.cssText += 'margin-top: 20px;';
         modalBody.appendChild(modalText);
+    }
+    if (actionFunction) {
+        const modalFooter = document.createElement("div");
+        modalFooter.classList.add("modal-footer");
+        const actionButton = document.createElement("button");
+        actionButton.innerText = "Remove";
+        actionButton.addEventListener("click", (_ev) => {
+            actionFunction();
+            document.getElementsByClassName("modal-background")[0].remove();
+        });
+        const cancelButton = document.createElement("button");
+        cancelButton.addEventListener("click", (_ev) => {
+            document.getElementsByClassName("modal-background")[0].remove();
+        });
+        cancelButton.innerText = "Cancel";
+        modalFooter.appendChild(cancelButton);
+        modalFooter.appendChild(actionButton);
+        modalBody.appendChild(modalFooter);
+
+        modalBody.classList.remove("has-close-button");
     }
     document.getElementsByTagName("body")[0].appendChild(modal);
 }

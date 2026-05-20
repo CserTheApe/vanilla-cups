@@ -6,6 +6,7 @@
         <title>Randomizer</title>
         <link href="../../main.css" type="text/css" rel="stylesheet" />
         <link href="style.css" type="text/css" rel="stylesheet" />
+        <link href="../../lib/modal/style.css" type="text/css" rel="stylesheet" />
     </head>
     <body>
         <header></header>
@@ -19,20 +20,30 @@
                     </div>
                 </div>
                 <div id="app-main">
-                    <div>
-                        <span>Number: </span>
-                        <input id="tool-number-input" type="number" min="1" max="10" value="1"/>
+                    <div id="image-extra">
+                        <div>
+                            <span>Number: </span>
+                            <input id="tool-number-input" type="number" min="1" max="10" value="1"/>
+                        </div>
+                        <button id="execute">Toss</button>
                     </div>
-                    <button id="execute">Toss</button>
                     <div id="results-section"></div>
                     <div id="image-section"></div>
-                    <div id="canvas-section"></div>
+                    <div id="canvas-section">
+                        <canvas id="canvas" width="1000" height="1000"></canvas>
+                    </div>
+                    <div id="canvas-extra">
+                        <textarea id="canvas-text"></textarea>
+                        <button id="spin-it">Spin</button>
+                        <p>Enter upto 100 line separated items</p>
+                    </div>
                 </div>
             </div>
         </main>
         <footer></footer>
 
         <script src="../../main.js"></script>
+        <script src="../../lib/modal/script.js"></script>
         <script src="script.js" type="module"></script>
     </body>
 </html>

@@ -1,6 +1,9 @@
 import { delay, getRandom, until, maxObjectImageSize } from './utils.js'
 
+const appMain = document.getElementById("app-main");
 const imageSection = document.getElementById("image-section");
+const imageExtra = document.getElementById("image-extra");
+const canvasExtra = document.getElementById("canvas-extra");
 const canvasSection = document.getElementById("canvas-section");
 const resultsSection = document.getElementById("results-section");
 
@@ -51,9 +54,13 @@ const coinNumberChange = toolNumber => {
 }
 
 export function initialiseCoinToss(num = 1) {
+    appMain.style.flexDirection = "column";
     canvasSection.style.display = "none";
+    canvasExtra.style.display = "none";
+    imageExtra.style.display = "flex";
     imageSection.style.display = "flex";
     imageSection.innerText = '';
+    resultsSection.innerText = '';
     coinNumberChange(num);
 }
 
