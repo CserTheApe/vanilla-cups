@@ -8,6 +8,8 @@
 #select-categories {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
     margin-bottom: 20px;
 }
@@ -84,5 +86,11 @@
 @media only screen and (min-width: 400px) {
     .letterbox {
         min-width: 30px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #canvas {
+        width: 50%;
     }
 }

@@ -50,11 +50,14 @@ document.getElementById("ring-select").addEventListener("change", function (e) {
     initGame();
 });
 
-canvas.addEventListener("mousedown", function (e) {
+canvas.addEventListener("pointerdown", function (e) {
+    if (e.target.hasPointerCapture(e.pointerId)) {
+        e.target.releasePointerCapture(e.pointerId);
+    }
     if (gameEnd) return;
     const relX = (e.offsetX * e.target.width) / e.target.offsetWidth;
     const relY = (e.offsetY * e.target.height) / e.target.offsetHeight;
-    const response = checkMouseOverRing(relX, relY);
+    const response = checkPointerOverRing(relX, relY);
     if (response) {
         movingRing = response[0];
         const fIndex = response[1];
@@ -65,7 +68,7 @@ canvas.addEventListener("mousedown", function (e) {
         );
     }
 });
-canvas.addEventListener("mousemove", function (e) {
+canvas.addEventListener("pointermove", function (e) {
     if (gameEnd) return;
     const relX = (e.offsetX * e.target.width) / e.target.offsetWidth;
     const relY = (e.offsetY * e.target.height) / e.target.offsetHeight;
@@ -75,7 +78,7 @@ canvas.addEventListener("mousemove", function (e) {
         drawRings();
         drawRing(movingRing, relX, relY + 25);
     } else {
-        const response = checkMouseOverRing(relX, relY);
+        const response = checkPointerOverRing(relX, relY);
         if (response) {
             e.target.style.cursor = "pointer";
         } else {
@@ -83,11 +86,11 @@ canvas.addEventListener("mousemove", function (e) {
         }
     }
 });
-canvas.addEventListener("mouseup", function (e) {
+canvas.addEventListener("pointerup", function (e) {
     const relX = (e.offsetX * e.target.width) / e.target.offsetWidth;
     const relY = (e.offsetY * e.target.height) / e.target.offsetHeight;
     if (movingRing) {
-        const response = checkMouseOverFrame(relX, relY);
+        const response = checkPointerOverFrame(relX, relY);
         if (response && response !== prevFrame) {
             const topRing =
                 selections[response][selections[response].length - 1];
@@ -102,7 +105,7 @@ canvas.addEventListener("mouseup", function (e) {
         afterMove();
     }
 });
-canvas.addEventListener("mouseleave", function () {
+canvas.addEventListener("pointerleave", function () {
     if (movingRing) {
         selections[prevFrame] = [...selections[prevFrame], movingRing];
         afterMove();
@@ -140,7 +143,7 @@ function getRingDimensions(frameX, frameY, halfWidth) {
     return [frameX - halfWidth, frameX + halfWidth, frameY - 52, frameY];
 }
 
-function checkMouseOverRing(x, y) {
+function checkPointerOverRing(x, y) {
     for (let fIndex in selections) {
         const frameRingCount = selections[fIndex].length;
         if (frameRingCount < 1) continue;
@@ -156,7 +159,7 @@ function checkMouseOverRing(x, y) {
     return null;
 }
 
-function checkMouseOverFrame(x, y) {
+function checkPointerOverFrame(x, y) {
     for (let fIndex in selections) {
         let minX = FRAME_X[fIndex] - 180;
         let maxX = FRAME_X[fIndex] + 180;

@@ -20,7 +20,13 @@ var baseAngle = 0;
 var itemNames = [];
 
 export const initialiseWheel = () => {
-    appMain.style.flexDirection = "row";
+    const mobileScreen = window.matchMedia("(max-width: 600px)");
+    if (mobileScreen.matches) {
+        appMain.style.flexDirection = "column";
+    }
+    else {
+        appMain.style.flexDirection = "row";
+    }
     imageSection.style.display = "none";
     imageExtra.style.display = "none";
     canvasExtra.style.display = "flex";
@@ -28,13 +34,6 @@ export const initialiseWheel = () => {
     resultsSection.innerText = '';
 
     drawWheel();
-    // ctx.beginPath();
-    // ctx.arc(500, 500, 250, 0, Math.PI);
-    // ctx.moveTo(500, 500);
-    // ctx.arc(500, 500, 250, Math.PI, Math.PI * 2);
-    // // ctx.arc(500, 500, 50, 0, Math.PI * 2);
-    // ctx.stroke();
-    // ctx.closePath();
 }
 
 const drawWheel = () => {
