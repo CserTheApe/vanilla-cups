@@ -46,7 +46,7 @@ const diceNumberChange = toolNumber => {
         let temp_image = document.createElement("div");
         temp_image.style.width = `${Die.size}px`;
         temp_image.style.height = `${Die.size}px`;
-        temp_image.style.backgroundImage = 'url("/assets/dice-sprite-sheet.png")';
+        temp_image.classList.add('die-bg-image');
         temp_image.style.backgroundSize = `auto ${Die.size}px`;
         dice.push(new Die(temp_image));
         imageSection.appendChild(temp_image);

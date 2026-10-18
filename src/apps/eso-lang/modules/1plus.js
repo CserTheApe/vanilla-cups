@@ -1,4 +1,5 @@
 import { arrayRotate, populateOverlay } from "./utils.js";
+import { createNormalModal } from "../../../lib/modal/script.js";
 
 const SYNTAX = ['#', '(', ')', '1', '[', ']', '+', '*', '"', '/', '\\', '^', '<', '.', ',', ':', ';', '|', '!'];
 const MEM_BOX_SIZE = 150;

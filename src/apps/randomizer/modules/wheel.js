@@ -1,4 +1,5 @@
 import { getRandom } from "./utils.js";
+import { createNormalModal } from '../../../lib/modal/script.js'
 
 
 const appMain = document.getElementById("app-main");

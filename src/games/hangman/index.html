@@ -20,7 +20,6 @@
                     <p>Value: <span id="incorrect-range-value"></span></p>
                     <button
                         id="new-game-button"
-                        onclick="initializePlayContainer()"
                     >
                         Start Game
                     </button>
@@ -35,8 +34,8 @@
                     <p style="margin-bottom: 2px">The word was:</p>
                     <div id="final-word-section"></div>
                     <button
+                        id="next-game-button"
                         style="margin-top: 16px"
-                        onclick="initializeInitContainer()"
                     >
                         Go Again
                     </button>
@@ -45,7 +44,7 @@
         </main>
         <footer></footer>
 
-        <script src="../../main.js"></script>
-        <script src="script.js"></script>
+        <script src="../../main.js" type="module"></script>
+        <script src="script.js" type="module"></script>
     </body>
 </html>

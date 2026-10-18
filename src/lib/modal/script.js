@@ -1,4 +1,4 @@
-function createModal(showCloseButton = false) {
+export function createModal(showCloseButton = false) {
     const modalBg = document.createElement("div");
     modalBg.classList.add("modal-background");
     modalBg.addEventListener("click", (ev) => {
@@ -22,7 +22,7 @@ function createModal(showCloseButton = false) {
     return modalBg;
 }
 
-function createMessageModal(message) {
+export function createMessageModal(message) {
     const modal = createModal();
     const modalBody = modal.getElementsByClassName("modal")[0];
     const modalTitle = document.createElement("div");
@@ -33,7 +33,7 @@ function createMessageModal(message) {
     document.getElementsByTagName("body")[0].appendChild(modal);
 }
 
-function createNormalModal(title, content, actionFunction, showCloseButton = true) {
+export function createNormalModal(title, content, actionFunction, showCloseButton = true) {
     const modal = createModal(showCloseButton);
     const modalBody = modal.getElementsByClassName("modal")[0];
     if (title) {

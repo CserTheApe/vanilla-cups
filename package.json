@@ -1,11 +1,13 @@
 {
   "name": "vanilla-cups",
   "scripts": {
-    "start": "parcel src/index.html -p 3000 --open",
-    "build": "parcel build src/index.html"
+    "dev": "parcel \"src/**/*.html\"",
+    "build": "parcel build \"src/**/*.html\" --no-source-maps",
+    "prod": "serve dist"
   },
   "devDependencies": {
-    "parcel": "^2.16.1",
-    "parcel-bundler": "^1.12.5"
+    "parcel": "2.12.0",
+    "serve": "^14.2.6",
+    "svgo": "^3.3.5"
   }
 }

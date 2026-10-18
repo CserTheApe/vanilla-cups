@@ -59,13 +59,21 @@
 .result-coin {
     width: 50px;
     height: 50px;
-    background-image: url("/assets/coin-sprite-sheet.png");
+    background-image: url("../../assets/coin-sprite-sheet.png");
     background-size: auto 50px;
 }
 
 .result-die {
     width: 50px;
     height: 50px;
-    background-image: url("/assets/dice-sprite-sheet.png");
+    background-image: url("../../assets/dice-sprite-sheet.png");
     background-size: auto 50px;
+}
+
+.coin-bg-image {
+    background-image: url("../../assets/coin-sprite-sheet.png");
+}
+
+.die-bg-image {
+    background-image: url("../../assets/dice-sprite-sheet.png");
 }

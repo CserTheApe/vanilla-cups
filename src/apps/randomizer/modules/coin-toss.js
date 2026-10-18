@@ -46,7 +46,7 @@ const coinNumberChange = toolNumber => {
         let temp_image = document.createElement("div");
         temp_image.style.width = `${Coin.size}px`;
         temp_image.style.height = `${Coin.size}px`;
-        temp_image.style.backgroundImage = 'url("/assets/coin-sprite-sheet.png")';
+        temp_image.classList.add('coin-bg-image');
         temp_image.style.backgroundSize = `auto ${Coin.size}px`;
         coins.push(new Coin(temp_image));
         imageSection.appendChild(temp_image);

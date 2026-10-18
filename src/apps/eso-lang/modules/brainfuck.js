@@ -1,4 +1,5 @@
 import { populateOverlay } from "./utils.js";
+import { createNormalModal } from "../../../lib/modal/script.js";
 
 const MEM_BOX_SIZE = 150;
 const MEM_BOX_Y = 100;

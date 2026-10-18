@@ -1,3 +1,5 @@
+import { createMessageModal } from "../../lib/modal/script";
+
 const RINGS = [
     {
         halfWidth: 180,
@@ -241,3 +243,4 @@ function initGame() {
 }
 
 initGame();
+document.getElementById("reset-button")?.addEventListener("click", () => initGame());

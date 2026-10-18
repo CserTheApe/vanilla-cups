@@ -232,3 +232,5 @@ function gameOver(result) {
 }
 
 initializeInitContainer();
+document.getElementById("new-game-button")?.addEventListener("click", () => initializePlayContainer());
+document.getElementById("next-game-button")?.addEventListener("click", () => initializeInitContainer());

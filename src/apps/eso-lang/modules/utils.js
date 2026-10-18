@@ -1,3 +1,5 @@
+import { createNormalModal } from "../../../lib/modal/script";
+
 export function arrayRotate(arr, reverse = false) {
     if (reverse)
         return arr.unshift(arr.pop())

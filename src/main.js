@@ -1,3 +1,6 @@
+import logoUrl from './assets/logo.png';
+import cupUrl from './assets/cup.png';
+
 // Header logic
 let header = document.getElementsByTagName("header")[0];
 let headerDiv = document.createElement("div");
@@ -6,7 +9,7 @@ homeLink.setAttribute("href","/");
 homeLink.classList.add("nostyle");
 homeLink.classList.add("header-title-link");
 let headerImage = document.createElement("img");
-headerImage.setAttribute("src","/assets/logo.png");
+headerImage.src = logoUrl;
 headerImage.setAttribute("width","50px");
 headerImage.setAttribute("height","50px");
 let headerTitle = document.createElement("h1");
@@ -28,13 +31,33 @@ footer.appendChild(footerDiv);
 
 
 // Link List Logic
-let listedLinks = document.querySelectorAll("ul.link-list > li");
-for (let link of listedLinks) {
-    link.innerHTML = `<img src='/assets/cup.png' width='24px' height='24px' /><span>${link.innerHTML}</span>`;
-    link.addEventListener("click", () => {
-        window.location.href = link.getAttribute("href");
-    });
+let listedLinks = document.querySelectorAll("ul.link-list");
+for (let listedLink of listedLinks) {
+    let anchorLinks = listedLink.querySelectorAll(":scope > a");
+    for (let link of anchorLinks) {
+        let linkItem = document.createElement("li");
+
+        let linkImage = document.createElement("img");
+        linkImage.src = cupUrl;
+        linkImage.setAttribute("width","24px");
+        linkImage.setAttribute("height","24px");
+
+        let linkText = document.createElement("span");
+        linkText.innerHTML = link.innerHTML;
+
+        link.innerHTML = "";
+        link.appendChild(linkImage);
+        link.appendChild(linkText);
+        linkItem.appendChild(link);
+        listedLink.appendChild(linkItem);
+
+        // link.innerHTML = `<img src='/assets/cup.png' width='24px' height='24px' /><span>${link.innerHTML}</span>`;
+        // link.addEventListener("click", () => {
+        //     window.location.href = link.getAttribute("href");
+        // });
+    }
 }
+
 
 // Accordion Logic
 let accordions = document.getElementsByClassName("accordion");

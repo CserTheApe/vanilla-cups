@@ -2,7 +2,7 @@ import { openUtfTable } from './modules/utils.js'
 import { executeBrainfuck, initialiseBrainfuckDebug, debugBrainfuckStep, debugBrainfuckRun } from './modules/brainfuck.js';
 import { debug1PlusRun, debug1PlusStep, execute1Plus, initialise1PlusDebug } from './modules/1plus.js';
 
-document.getElementById("utf-button").addEventListener('click', openUtfTable);
+document.getElementById("utf-button")?.addEventListener('click', openUtfTable);
 
 
 // RESOURCE : https://esolangpark.vercel.app
